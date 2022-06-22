@@ -1,6 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI-GitHubActions
+env:
+  APP_NAME : "iFlask"
+  PAC_NAME : "flask-deploy-ver-${{ github.sha }}"
 
 # Controls when the workflow will run
 on:
@@ -22,6 +25,11 @@ jobs:
     steps:
     - name: Print Hello Message Build
       run : echo "Hello from build job"
+      
+    - name: Execute few commands
+      run : |
+        echo "Message1"
+        echo "Message2"
           
   deploy:
     runs-on: ubuntu-latest
