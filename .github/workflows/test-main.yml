@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI-GitHubActions
 env:
   APP_NAME : "iFlask"
@@ -26,6 +24,14 @@ jobs:
     - name: Print Hello Message Build
       run : echo "Hello from build job"
       
+    - name: Print env vars
+      run : |
+        echo "Var1 = ${{ env.VAR1 }}"
+        echo "Var2 = ${{ env.VAR2 }}"
+        echo "Var3 = $LOCAL_VAR"
+      env:
+        LOCAL_VAR: "This is local environment variable"
+      
     - name: Execute few commands
       run : |
         echo "Message1"
@@ -41,6 +47,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
+    env:
+      VAR1: "This is job level variable1"
+      VAR2: "This is job level variable2" 
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -54,4 +63,4 @@ jobs:
       run : aws --version
       
     - name: Lets test some packages if they are here 2
-      run : zip
+      run : zip --version
