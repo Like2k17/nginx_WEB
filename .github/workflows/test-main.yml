@@ -40,3 +40,6 @@ jobs:
     steps:
     - name: Print Hello Message Deploy
       run : echo "Hello from deploy job"
+      
+    - name: Print Deployment Package
+      run : echo "Deploy package name is ${{ env.PAC_NAME }}"
