@@ -24,14 +24,6 @@ jobs:
     - name: Print Hello Message Build
       run : echo "Hello from build job"
       
-    - name: Print env vars
-      run : |
-        echo "Var1 = ${{ env.VAR1 }}"
-        echo "Var2 = ${{ env.VAR2 }}"
-        echo "Var3 = $LOCAL_VAR"
-      env:
-        LOCAL_VAR: "This is local environment variable"
-      
     - name: Execute few commands
       run : |
         echo "Message1"
@@ -55,6 +47,14 @@ jobs:
     steps:
     - name: Print Hello Message Deploy
       run : echo "Hello from deploy job"
+      
+    - name: Print env vars
+      run : |
+        echo "Var1 = ${{ env.VAR1 }}"
+        echo "Var2 = ${{ env.VAR2 }}"
+        echo "Var3 = $LOCAL_VAR"
+      env:
+        LOCAL_VAR: "This is local environment variable"
       
     - name: Print Deployment Package
       run : echo "Deploy package name is ${{ env.PAC_NAME }}"
